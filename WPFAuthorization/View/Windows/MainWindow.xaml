@@ -1,0 +1,45 @@
+﻿<Window x:Class="WPFAuthorization.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAuthorization.View.Windows"
+         xmlns:ViewModel="clr-namespace:WPFAuthorization.ViewModel" 
+        mc:Ignorable="d"
+        Title="MainWindow" Height="570" Width="550">
+    <Window.DataContext>
+        <ViewModel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Background="LightGreen">
+            <TextBlock Text="Авторизация" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize ="30"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="85*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Логин:" FontSize="20" Margin="40,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox x:Name="loginBox" Grid.Column="1" FontSize="20" Margin="30" Text="{Binding UserLoging.Login}"/>
+            <TextBlock Text="Пароль:" FontSize=" 20" Grid.Row="2" Margin="40,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <PasswordBox x:Name="passwordBox" Grid.Column="1" Grid.Row="2" FontSize="20" Margin="30" PasswordChanged="passwordBox_PasswordChanged"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Content="Войти" Margin="200,20,200,20" Background="LightGreen" FontSize="20" x:Name="enterDataButton" Command="{Binding ValidationCommand}"/>
+            <Button Grid.Row="1" Content="Выйти" Margin="200,20,200,20" Background="LightGreen" FontSize="20" x:Name="exitDataButton" Command="{Binding ExitCommand}"/>
+        </Grid>
+    </Grid>
+</Window> 
